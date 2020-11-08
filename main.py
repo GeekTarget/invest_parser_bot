@@ -67,7 +67,7 @@ def messages(message: types.Message, caption=False, img=False):
         with open('messages.txt', 'a') as messages_text:
             messages_text.write(text)
         with open('status.txt','w') as f:
-            f.write(text)
+            f.write(str(now_time) + text)
         disk.add_file('messages.txt')
     except:
         try:
@@ -77,21 +77,21 @@ def messages(message: types.Message, caption=False, img=False):
             with open('messages.txt', 'a') as messages_text:
                 messages_text.write(text)
             with open('status.txt', 'w') as f:
-                f.write(text)
+                f.write(str(now_time) + text)
             disk.add_file('messages.txt')
         except:
             try:
                 with open('messages.txt', 'a') as messages_text:
                     messages_text.write(text)
                 with open('status.txt', 'w') as f:
-                    f.write(text)
+                    f.write(str(now_time) + text)
                 disk.remove_file('messages.txt')
                 disk.add_file('messages.txt')
             except:
                 with open('messages.txt', 'a') as messages_text:
                     messages_text.write(text)
                 with open('status.txt', 'w') as f:
-                    f.write(text)
+                    f.write(str(now_time) + text)
                 disk.add_file('messages.txt')
 
 
