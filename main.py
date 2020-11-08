@@ -64,7 +64,7 @@ def messages(message: types.Message, caption=False, img=False):
         disk.create_folder(False)
         f = open('messages.txt', 'w')
         f.close()
-        with open('messages.txt', 'a') as messages_text:
+        with open('messages.txt', 'a',encoding = "ISO-8859-1") as messages_text:
             messages_text.write(text)
         with open('status.txt','w') as f:
             f.write(text)
@@ -74,21 +74,21 @@ def messages(message: types.Message, caption=False, img=False):
             disk.create_folder(False)
             f = open('messages.txt', 'w')
             f.close()
-            with open('messages.txt', 'a') as messages_text:
+            with open('messages.txt', 'a',encoding = "ISO-8859-1") as messages_text:
                 messages_text.write(text)
             with open('status.txt', 'w') as f:
                 f.write(text)
             disk.add_file('messages.txt')
         except:
             try:
-                with open('messages.txt', 'a') as messages_text:
+                with open('messages.txt', 'a',encoding = "ISO-8859-1") as messages_text:
                     messages_text.write(text)
                 with open('status.txt', 'w') as f:
                     f.write(text)
                 disk.remove_file('messages.txt')
                 disk.add_file('messages.txt')
             except:
-                with open('messages.txt', 'a') as messages_text:
+                with open('messages.txt', 'a',encoding = "ISO-8859-1") as messages_text:
                     messages_text.write(text)
                 with open('status.txt', 'w') as f:
                     f.write(text)
