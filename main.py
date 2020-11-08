@@ -10,7 +10,6 @@ import os
 import re
 from aiogram.dispatcher.filters import Command
 import pytz
-import codecs
 
 
 
@@ -38,7 +37,7 @@ emoji_pattern = re.compile("["
 
 @dp.message_handler(Command('status'))
 async def handle_message(message: types.Message):
-    with codecs.open('status.txt', 'r',encoding='utf-8') as file:
+    with open('status.txt', 'r',encoding = "ISO-8859-1") as file:
         date = file.read()[:21]
     await message.answer(f'Бот запущен\nПоследний пост : {date}')
 
