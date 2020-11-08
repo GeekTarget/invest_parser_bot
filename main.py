@@ -54,7 +54,7 @@ def messages(message: types.Message, caption=False, img=False):
         if message['chat']['type'] == 'group':
             if message.text[-1] == ':':
                 txt = str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text'])
-                text = '\n\n' + txt + '\n'
+                text = '\n\n' + txt
             else:
                 text = '\n\n' + str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text']) + '\n'
         else:
