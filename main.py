@@ -37,7 +37,7 @@ emoji_pattern = re.compile("["
 
 @dp.message_handler(Command('status'))
 async def handle_message(message: types.Message):
-    with open('status.txt', 'r') as file:
+    with open('status.txt', 'r',encoding='utf-8') as file:
         date = file.read()[:21]
     await message.answer(f'Бот запущен\nПоследний пост : {date}')
 
