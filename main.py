@@ -51,7 +51,7 @@ def messages(message: types.Message, caption=False, img=False):
     elif caption == False and img != False:
         text = '  ' + img
     else:
-        if message['chat']['type'] == 'group':
+        if message['chat']['type'] == 'supergroup':
             if message.text[-1] == ':':
                 txt = str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text'])
                 text = '\n\n' + txt
@@ -98,7 +98,7 @@ def messages(message: types.Message, caption=False, img=False):
 # Обработчик фотографий
 @dp.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
-    if message['chat']['type'] == 'group':
+    if message['chat']['type'] == 'supergroup':
         document_id = message['photo'][-1].file_id  # id фотографии
         file_info = BOT.get_file(document_id)
         filename, file_extension = os.path.splitext(
@@ -150,7 +150,7 @@ def handle_docs_photo(message):
 # Обработчик документов
 @dp.message_handler(content_types=['document'])
 def handle_documents(message):
-    if message['chat']['type'] == 'group':
+    if message['chat']['type'] == 'supergroup':
         file_name = message["document"].file_name.split('.')
         document_id = message["document"].file_id
         file_info = BOT.get_file(document_id)
