@@ -1,4 +1,4 @@
-## -*- coding: utf-8 -*-
+# coding: utf-8
 import telebot
 import urllib
 from yandex_disk import YaDisk
