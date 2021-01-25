@@ -1,4 +1,4 @@
-# coding: utf-8
+# coding=utf-8
 import telebot
 import urllib
 from yandex_disk import YaDisk
@@ -58,6 +58,7 @@ def messages(message: types.Message, caption=False, img=False):
                 text = '\n\n' + txt
             else:
                 text = '\n\n' + str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text']) + '\n'
+                print(text)
         else:
             return False
     try:
