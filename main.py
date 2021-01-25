@@ -13,7 +13,6 @@ from aiogram.dispatcher.filters import Command
 import pytz
 
 
-
 # Main variable
 
 logging.basicConfig(level=logging.INFO)
@@ -64,35 +63,35 @@ def messages(message: types.Message, caption=False, img=False):
     try:
         disk.create_folder(True)
         disk.create_folder(False)
-        f = open('messages.txt', 'w')
+        f = open('messages.txt', 'w',encoding="utf-8")
         f.close()
-        with open('messages.txt', 'a') as messages_text:
+        with open('messages.txt', 'a',encoding="utf-8") as messages_text:
             messages_text.write(text)
-        with open('status.txt','w') as f:
+        with open('status.txt','w',encoding="utf-8") as f:
             f.write(str(now_time) + text)
         disk.add_file('messages.txt')
     except:
         try:
             disk.create_folder(False)
-            f = open('messages.txt', 'w')
+            f = open('messages.txt', 'w',encoding="utf-8")
             f.close()
-            with open('messages.txt', 'a') as messages_text:
+            with open('messages.txt', 'a',encoding="utf-8") as messages_text:
                 messages_text.write(text)
-            with open('status.txt', 'w') as f:
+            with open('status.txt', 'w',encoding="utf-8") as f:
                 f.write(str(now_time) + text)
             disk.add_file('messages.txt')
         except:
             try:
-                with open('messages.txt', 'a') as messages_text:
+                with open('messages.txt', 'a',encoding="utf-8") as messages_text:
                     messages_text.write(text)
-                with open('status.txt', 'w') as f:
+                with open('status.txt', 'w',encoding="utf-8") as f:
                     f.write(str(now_time) + text)
                 disk.remove_file('messages.txt')
                 disk.add_file('messages.txt')
             except:
-                with open('messages.txt', 'a') as messages_text:
+                with open('messages.txt', 'a',encoding="utf-8") as messages_text:
                     messages_text.write(text)
-                with open('status.txt', 'w') as f:
+                with open('status.txt', 'w',encoding="utf-8") as f:
                     f.write(str(now_time) + text)
                 disk.add_file('messages.txt')
 
