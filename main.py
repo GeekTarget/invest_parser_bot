@@ -48,16 +48,16 @@ async def handle_message(message: types.Message):
 def messages(message: types.Message, caption=False, img=False):
     now_time = datetime.now(tz).strftime("%d-%m-%Y %H:%M:%S")
     if caption != False:
-        text = '  ' + emoji_pattern.sub(r'', caption.encode('ascii', 'ignore').decode('utf-8')) + ' - ' + img
+        text = '  ' + emoji_pattern.sub(r'', caption) + ' - ' + img
     elif caption == False and img != False:
         text = '  ' + img
     else:
         if message['chat']['type'] == 'supergroup':
             if message.text[-1] == ':':
-                txt = str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text'].encode('ascii', 'ignore').decode('utf-8'))
+                txt = str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text'])
                 text = '\n\n' + txt
             else:
-                text = '\n\n' + str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text'].encode('ascii', 'ignore').decode('utf-8')) + '\n'
+                text = '\n\n' + str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text']) + '\n'
                 print(text)
         else:
             return False
