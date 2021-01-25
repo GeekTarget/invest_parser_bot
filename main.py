@@ -1,4 +1,3 @@
-# coding=utf-8
 import telebot
 import urllib
 from yandex_disk import YaDisk
@@ -11,7 +10,6 @@ import os
 import re
 from aiogram.dispatcher.filters import Command
 import pytz
-
 
 # Main variable
 
@@ -37,7 +35,7 @@ emoji_pattern = re.compile("["
 
 @dp.message_handler(Command('status'))
 async def handle_message(message: types.Message):
-    with open('status.txt', 'r',encoding = "ISO-8859-1") as file:
+    with open('status.txt', 'r') as file:
         date = file.read()[:21]
     await message.answer(f'Бот запущен\nПоследний пост : {date}')
 
@@ -45,30 +43,32 @@ async def handle_message(message: types.Message):
 # Обработчик текстовых сообщений
 @dp.message_handler()
 def messages(message: types.Message, caption=False, img=False):
+    print(message)
     now_time = datetime.now(tz).strftime("%d-%m-%Y %H:%M:%S")
     if caption != False:
         text = '  ' + emoji_pattern.sub(r'', caption) + ' - ' + img
     elif caption == False and img != False:
         text = '  ' + img
     else:
-        if message['chat']['type'] == 'supergroup':
+        print(message)
+        if message['chat']['type'] == "supergroup":
             if message.text[-1] == ':':
                 txt = str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text'])
-                text = '\n\n' + txt
+                text = '\n\n' + txt + '\n'
             else:
                 text = '\n\n' + str(now_time) + ' : ' + emoji_pattern.sub(r'', message['text']) + '\n'
-                print(text)
         else:
+            print(1)
             return False
     try:
         disk.create_folder(True)
         disk.create_folder(False)
-        f = open('messages.txt', 'w',encoding="utf-8")
+        f = open('messages.txt', 'w', encoding="utf-8")
         f.close()
-        with open('messages.txt', 'a',encoding="utf-8") as messages_text:
+        with open('messages.txt', 'a', encoding="utf-8") as messages_text:
             messages_text.write(text)
-        with open('status.txt','w',encoding="utf-8") as f:
-            f.write(str(now_time) + text)
+        with open('status.txt', 'w', encoding="utf-8") as f:
+            f.write(text)
         disk.add_file('messages.txt')
     except:
         try:
@@ -78,21 +78,21 @@ def messages(message: types.Message, caption=False, img=False):
             with open('messages.txt', 'a',encoding="utf-8") as messages_text:
                 messages_text.write(text)
             with open('status.txt', 'w',encoding="utf-8") as f:
-                f.write(str(now_time) + text)
+                f.write(text)
             disk.add_file('messages.txt')
         except:
             try:
                 with open('messages.txt', 'a',encoding="utf-8") as messages_text:
                     messages_text.write(text)
                 with open('status.txt', 'w',encoding="utf-8") as f:
-                    f.write(str(now_time) + text)
+                    f.write(text)
                 disk.remove_file('messages.txt')
                 disk.add_file('messages.txt')
             except:
                 with open('messages.txt', 'a',encoding="utf-8") as messages_text:
                     messages_text.write(text)
                 with open('status.txt', 'w',encoding="utf-8") as f:
-                    f.write(str(now_time) + text)
+                    f.write(text)
                 disk.add_file('messages.txt')
 
 
@@ -179,3 +179,4 @@ def handle_documents(message):
 if __name__ == '__main__':
     dp.loop.create_task(bot.send_message(chat_id=197892235, text='Бот включён'))
     executor.start_polling(dp, skip_updates=True)
+
