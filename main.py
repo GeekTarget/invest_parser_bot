@@ -72,9 +72,9 @@ def messages(message: types.Message, caption=False, img=False):
                 messages_text.write(text)
         with open('status.txt', 'w', encoding="utf-8") as f:
             try:
-                messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                f.write(text.encode('cp1251').decode('Windows-1251'))
             except:
-                messages_text.write(text)
+                f.write(text)
         disk.add_file('messages.txt')
     except:
         try:
@@ -88,9 +88,9 @@ def messages(message: types.Message, caption=False, img=False):
                     messages_text.write(text)
             with open('status.txt', 'w',encoding="utf-8") as f:
                 try:
-                    messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    f.write(text.encode('cp1251').decode('Windows-1251'))
                 except:
-                    messages_text.write(text)
+                    f.write(text)
             disk.add_file('messages.txt')
         except:
             try:
@@ -101,9 +101,9 @@ def messages(message: types.Message, caption=False, img=False):
                         messages_text.write(text)
                 with open('status.txt', 'w',encoding="utf-8") as f:
                     try:
-                        messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                        f.write(text.encode('cp1251').decode('Windows-1251'))
                     except:
-                        messages_text.write(text)
+                        f.write(text)
                 disk.remove_file('messages.txt')
                 disk.add_file('messages.txt')
             except:
@@ -114,9 +114,9 @@ def messages(message: types.Message, caption=False, img=False):
                         messages_text.write(text)
                 with open('status.txt', 'w',encoding="utf-8") as f:
                     try:
-                        messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                        f.write(text.encode('cp1251').decode('Windows-1251'))
                     except:
-                        messages_text.write(text)
+                        f.write(text)
                 disk.add_file('messages.txt')
 
 
