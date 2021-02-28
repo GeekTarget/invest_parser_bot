@@ -66,9 +66,15 @@ def messages(message: types.Message, caption=False, img=False):
         f = open('messages.txt', 'w', encoding="utf-8")
         f.close()
         with open('messages.txt', 'a', encoding="utf-8") as messages_text:
-            messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+            try:
+                messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+            except:
+                messages_text.write(text)
         with open('status.txt', 'w', encoding="utf-8") as f:
-            f.write(text.encode('cp1251').decode('Windows-1251'))
+            try:
+                messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+            except:
+                messages_text.write(text)
         disk.add_file('messages.txt')
     except:
         try:
@@ -76,23 +82,41 @@ def messages(message: types.Message, caption=False, img=False):
             f = open('messages.txt', 'w',encoding="utf-8")
             f.close()
             with open('messages.txt', 'a',encoding="utf-8") as messages_text:
-                messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                try:
+                    messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                except:
+                    messages_text.write(text)
             with open('status.txt', 'w',encoding="utf-8") as f:
-                f.write(text.encode('cp1251').decode('Windows-1251'))
+                try:
+                    messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                except:
+                    messages_text.write(text)
             disk.add_file('messages.txt')
         except:
             try:
                 with open('messages.txt', 'a',encoding="utf-8") as messages_text:
-                    messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    try:
+                        messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    except:
+                        messages_text.write(text)
                 with open('status.txt', 'w',encoding="utf-8") as f:
-                    f.write(text.encode('cp1251').decode('Windows-1251'))
+                    try:
+                        messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    except:
+                        messages_text.write(text)
                 disk.remove_file('messages.txt')
                 disk.add_file('messages.txt')
             except:
                 with open('messages.txt', 'a',encoding="utf-8") as messages_text:
-                    messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    try:
+                        messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    except:
+                        messages_text.write(text)
                 with open('status.txt', 'w',encoding="utf-8") as f:
-                    f.write(text.encode('cp1251').decode('Windows-1251'))
+                    try:
+                        messages_text.write(text.encode('cp1251').decode('Windows-1251'))
+                    except:
+                        messages_text.write(text)
                 disk.add_file('messages.txt')
 
 
@@ -179,4 +203,3 @@ def handle_documents(message):
 if __name__ == '__main__':
     dp.loop.create_task(bot.send_message(chat_id=197892235, text='Бот включён'))
     executor.start_polling(dp, skip_updates=True)
-
