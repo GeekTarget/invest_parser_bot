@@ -201,5 +201,4 @@ def handle_documents(message):
 
 
 if __name__ == '__main__':
-    dp.loop.create_task(bot.send_message(chat_id=197892235, text='Бот включён'))
     executor.start_polling(dp, skip_updates=True)
