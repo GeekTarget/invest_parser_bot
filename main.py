@@ -42,7 +42,7 @@ async def handle_message(message: types.Message):
 
 # Обработчик текстовых сообщений
 @dp.message_handler()
-async messages(message: types.Message, caption=False, img=False):
+async def messages(message: types.Message, caption=False, img=False):
     print(message)
     now_time = datetime.now(tz).strftime("%d-%m-%Y %H:%M:%S")
     if caption != False:
